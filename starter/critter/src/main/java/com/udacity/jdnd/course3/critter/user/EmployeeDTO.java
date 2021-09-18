@@ -1,5 +1,8 @@
 package com.udacity.jdnd.course3.critter.user;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.DayOfWeek;
 import java.util.Set;
 
@@ -10,7 +13,9 @@ import java.util.Set;
 public class EmployeeDTO {
     private long id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
+    @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
     public long getId() {

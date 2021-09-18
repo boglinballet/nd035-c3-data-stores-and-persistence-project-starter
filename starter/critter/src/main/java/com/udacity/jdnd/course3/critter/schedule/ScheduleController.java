@@ -2,6 +2,7 @@ package com.udacity.jdnd.course3.critter.schedule;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -9,6 +10,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/schedule")
+@Transactional
 public class ScheduleController {
 
     @PostMapping
@@ -35,4 +37,6 @@ public class ScheduleController {
     public List<ScheduleDTO> getScheduleForCustomer(@PathVariable long customerId) {
         throw new UnsupportedOperationException();
     }
+
+    // create methods that convert results from the service layer to DTOs to be used in controller results
 }
