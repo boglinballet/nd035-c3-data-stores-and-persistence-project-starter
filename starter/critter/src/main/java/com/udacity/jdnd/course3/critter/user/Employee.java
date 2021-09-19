@@ -1,12 +1,19 @@
 package com.udacity.jdnd.course3.critter.user;
 
+import com.udacity.jdnd.course3.critter.schedule.Schedule;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
 public class Employee {
     @Id
     @GeneratedValue
@@ -26,37 +33,10 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
+    @ManyToMany(mappedBy = "employees")
+    private List<Schedule> schedules = new ArrayList<>();
+
     public Employee(){}
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<EmployeeSkill> getEmployeeSkills() {
-        return skills;
-    }
-
-    public void setEmployeeSkills(Set<EmployeeSkill> employeeSkills) {
-        this.skills = employeeSkills;
-    }
-
-    public Set<DayOfWeek> getAvailability() {
-        return daysAvailable;
-    }
-
-    public void setAvailability(Set<DayOfWeek> availability) {
-        this.daysAvailable = availability;
-    }
 }
+

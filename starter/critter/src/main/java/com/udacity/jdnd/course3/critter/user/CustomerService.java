@@ -1,12 +1,15 @@
 package com.udacity.jdnd.course3.critter.user;
 
+import com.udacity.jdnd.course3.critter.pet.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
@@ -27,4 +30,10 @@ public class CustomerService {
         return customerRepository.findByName(name);
     }
 
+    /*
+    public Optional<Customer> getCustomerByPetId(Long petId){
+        return customerRepository.findByPetId(petId);
+    }
+
+     */
 }

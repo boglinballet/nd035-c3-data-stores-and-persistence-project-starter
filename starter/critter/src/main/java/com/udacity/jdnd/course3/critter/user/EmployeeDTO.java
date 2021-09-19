@@ -13,9 +13,7 @@ import java.util.Set;
 public class EmployeeDTO {
     private long id;
     private String name;
-    @Enumerated(EnumType.STRING)
     private Set<EmployeeSkill> skills;
-    @Enumerated(EnumType.STRING)
     private Set<DayOfWeek> daysAvailable;
 
     public long getId() {

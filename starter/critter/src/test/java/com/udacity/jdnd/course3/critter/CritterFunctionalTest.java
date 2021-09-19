@@ -60,7 +60,6 @@ public class CritterFunctionalTest {
         EmployeeDTO employeeDTO = createEmployeeDTO();
         EmployeeDTO newEmployee = userController.saveEmployee(employeeDTO);
         EmployeeDTO retrievedEmployee = userController.getEmployee(newEmployee.getId());
-        Thread.sleep(600000000);
         Assertions.assertEquals(employeeDTO.getSkills(), newEmployee.getSkills());
         Assertions.assertEquals(newEmployee.getId(), retrievedEmployee.getId());
         Assertions.assertTrue(retrievedEmployee.getId() > 0);
@@ -108,6 +107,8 @@ public class CritterFunctionalTest {
         Assertions.assertEquals(pets.get(0).getOwnerId(), newCustomer.getId());
         Assertions.assertEquals(pets.get(0).getId(), newPet.getId());
     }
+
+
 
     @Test
     public void testFindOwnerByPet() {

@@ -1,18 +1,20 @@
 package com.udacity.jdnd.course3.critter.user;
 
 import com.udacity.jdnd.course3.critter.pet.Pet;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Nationalized;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Customer {
     @Id
     @GeneratedValue
+    @Column(name = "customer_id")
     private Long id;
 
     @Nationalized
@@ -22,50 +24,10 @@ public class Customer {
 
     private String notes;
 
-    @OneToMany(mappedBy = "owner")
-    private Set<Pet> pets;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Pet> pets;
 
     public Customer(){
-
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public Set<Pet> getPets() {
-        return pets;
-    }
-
-    public void setPets(Set<Pet> pets) {
-        this.pets = pets;
-    }
 }
