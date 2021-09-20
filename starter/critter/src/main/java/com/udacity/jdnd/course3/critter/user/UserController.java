@@ -75,8 +75,12 @@ public class UserController {
     //@PostMapping("/employee/{employeeId}")
     @GetMapping("/employee/{employeeId}")
     public EmployeeDTO getEmployee(@PathVariable long employeeId) {
-        Employee employee = employeeService.getEmployeeById(employeeId);
-        return convertEntityToEmployeeDTO(employee);
+        Optional<Employee> optional = employeeService.getEmployeeById(employeeId);
+        if(optional.isPresent()){
+            return convertEntityToEmployeeDTO(optional.get());
+        }else{
+            throw new UnsupportedOperationException();
+        }
     }
 
     @PutMapping("/employee/{employeeId}")
